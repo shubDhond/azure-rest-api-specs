@@ -72,6 +72,9 @@ swagger-to-sdk:
     after_scripts:
       - bundle install && rake arm:regen_all_profiles['azure_mgmt_storagecache']
   - repo: azure-cli-extensions
+  - repo: azure-resource-manager-schemas
+    after_scripts:
+      - node sdkauto_afterscript.js storagecache/resource-manager
 ```
 
 ## Python
@@ -99,6 +102,10 @@ See configuration in [readme.typescript.md](./readme.typescript.md)
 See configuration in [readme.ruby.md](./readme.ruby.md)
 
 
+## AzureResourceSchema
+
+See configuration in [readme.azureresourceschema.md](./readme.azureresourceschema.md)
+
 ## Multi-API/Profile support for AutoRest v3 generators 
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
@@ -111,6 +118,7 @@ require: $(this-folder)/../../../profiles/readme.md
 
 # all the input files across all versions
 input-file:
+  - $(this-folder)/Microsoft.StorageCache/stable/2020-03-01/storagecache.json
   - $(this-folder)/Microsoft.StorageCache/stable/2019-11-01/storagecache.json
   - $(this-folder)/Microsoft.StorageCache/preview/2019-08-01-preview/storagecache.json
 

@@ -37,7 +37,7 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkRuleSets/default": {
       "put": {
         "tags": [
-          "Namespaces"
+          "NetworkRuleSets"
         ],
         "x-ms-examples": {
           "NameSpaceNetworkRuleSetCreate": {
@@ -86,7 +86,7 @@
       },
       "get": {
         "tags": [
-          "Namespaces"
+          "NetworkRuleSets"
         ],
         "x-ms-examples": {
           "NameSpaceNetworkRuleSetGet": {
@@ -177,6 +177,10 @@
           "description": "NetworkRuleSet properties",
           "x-ms-client-flatten": true,
           "properties": {
+            "trustedServiceAccessEnabled": {
+              "type": "boolean",
+              "description": "Value that indicates whether Trusted Service Access is Enabled or not."
+            },
             "defaultAction": {
               "type": "string",
               "description": "Default Action for Network Rule Set",

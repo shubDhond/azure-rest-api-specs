@@ -106,6 +106,7 @@ swagger-to-sdk:
   - repo: azure-sdk-for-python
     after_scripts:
       - python ./scripts/multiapi_init_gen.py azure-mgmt-eventhub
+  - repo: azure-sdk-for-python-track2
   - repo: azure-sdk-for-java
   - repo: azure-sdk-for-go
   - repo: azure-sdk-for-js
@@ -113,6 +114,9 @@ swagger-to-sdk:
   - repo: azure-sdk-for-ruby
     after_scripts:
       - bundle install && rake arm:regen_all_profiles['azure_mgmt_event_hub']
+  - repo: azure-resource-manager-schemas
+    after_scripts:
+      - node sdkauto_afterscript.js eventhub/resource-manager
 ```
 
 
@@ -142,6 +146,10 @@ See configuration in [readme.go.md](./readme.go.md)
 
 See configuration in [readme.java.md](./readme.java.md)
 
+## AzureResourceSchema
+
+See configuration in [readme.azureresourceschema.md](./readme.azureresourceschema.md)
+
 ## Multi-API/Profile support for AutoRest v3 generators 
 
 AutoRest V3 generators require the use of `--tag=all-api-versions` to select api files.
@@ -154,19 +162,21 @@ require: $(this-folder)/../../../profiles/readme.md
 
 # all the input files across all versions
 input-file:
-  - $(this-folder)/Microsoft.EventHub/stable/2015-08-01/EventHub.json
-  - $(this-folder)/Microsoft.EventHub/stable/2014-09-01/EventHub.json
   - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/AuthorizationRules.json
   - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/CheckNameAvailability.json
   - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/consumergroups.json
   - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/disasterRecoveryConfigs.json
   - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/eventhubs.json
+  - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/namespaces.json
+  - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/networkRuleSets.json
+  - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/operations.json
   - $(this-folder)/Microsoft.EventHub/stable/2017-04-01/sku.json
+  - $(this-folder)/Microsoft.EventHub/stable/2015-08-01/EventHub.json
+  - $(this-folder)/Microsoft.EventHub/stable/2014-09-01/EventHub.json
   - $(this-folder)/Microsoft.EventHub/preview/2018-01-01-preview/AvailableClusterRegions-preview.json
   - $(this-folder)/Microsoft.EventHub/preview/2018-01-01-preview/Clusters-preview.json
   - $(this-folder)/Microsoft.EventHub/preview/2018-01-01-preview/ipfilterrules-preview.json
   - $(this-folder)/Microsoft.EventHub/preview/2018-01-01-preview/namespaces-preview.json
-  - $(this-folder)/Microsoft.EventHub/preview/2018-01-01-preview/operations-preview.json
   - $(this-folder)/Microsoft.EventHub/preview/2018-01-01-preview/quotaConfiguration-preview.json
   - $(this-folder)/Microsoft.EventHub/preview/2018-01-01-preview/virtualnetworkrules-preview.json
   - $(this-folder)/Microsoft.EventHub/preview/2018-01-01-preview/networkrulessets-preview.json
